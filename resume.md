@@ -56,34 +56,42 @@ Cloud Platform Engineer with 5 years of experience building internal developer p
 
 ## KEY PROJECTS
 
-### 1. Cross-Repo Infrastructure Provisioning Golden Path
+### 1. Ephemeral Cross-Repo Token Generator (Azure OIDC & GitHub App)
+
+Engineered a Zero-Trust cross-repository cloning architecture that eliminates persistent secrets at rest by combining Azure OIDC, Azure Key Vault, and dynamic GitHub App access token generation. Replacing traditional background rotation, this decentralized pattern mints short-lived tokens at pipeline runtime driven by a centralized JSON-formatted organization variable mapping repository access, governed via platform-reviewed pull requests.
+
+* **Zero Secrets at Rest:** Replaced static repository tokens with passwordless Azure OIDC federation, removing stored credentials entirely from GitHub settings.
+* **Dynamic Access Token Generation:** Developed runtime workflows that fetch secure Key Vault credentials to dynamically generate scoped GitHub App access tokens on the fly based on the centralized configuration.
+* **Centralized Governance:** Streamlined multi-repository access control using a single JSON-formatted org variable mapping repo names to permissions, managed via platform-reviewed PRs to eliminate background rotation overhead.
+
+### 2. Cross-Repo Infrastructure Provisioning Golden Path
 
 * **Technologies:** GitHub Reusable Actions, GitHub Apps, Azure OIDC Federation, Terraform, Python, JQ
 * Designed an event-driven, cross-repo provisioning architecture replacing direct repository access and PATs with a secure dispatcher-handler pattern.
 * Automated JSON-to-tfvars payload deep-merging via a custom Python GitHub Action, generating automated PRs and `terraform plan` reviews.
 * Enforced zero standing secrets using Azure Key Vault-backed short-lived tokens and OIDC federated identities.
 
-### 2. AI-Powered Slack Assistant & Internal Query Handler
+### 3. AI-Powered Slack Assistant & Internal Query Handler
 
 * **Technologies:** Slack API, Azure OpenAI API, Python, Microsoft Entra ID, Azure App Service
 * Built and deployed a custom Slack application integrated with Azure OpenAI to intelligently field, parse, and answer internal platform and engineering queries directly within channel feeds.
 * Automated contextual troubleshooting support and documentation lookups, minimizing recurring manual interruptions for the platform engineering team.
 
-### 3. Enterprise Ansible Execution Platform on AKS
+### 4. Enterprise Ansible Execution Platform on AKS
 
 * **Technologies:** Ansible, GitHub Actions, AKS, Containerization, Python
 * Architected a scalable internal automation platform using custom GitHub Actions and Community Ansible to replicate enterprise features of Ansible Tower without licensing overhead.
 * Built and managed custom runner images on AKS, integrating automated linting and pip/Ansible Galaxy package management.
 * Secured access using custom onboarding logic and rigorous workflow audit logging.
 
-### 4. Agentic GitHub Workflows for Automated Terraform PRs
+### 5. Agentic GitHub Workflows for Automated Terraform PRs
 
 * **Technologies:** Terraform, GitHub Actions, GitHub Agentic Workflows, Azure OpenAI, Azure Firewall
 * Built a self-service GitHub issue intake pipeline powered by AI agents to automatically draft validated, convention-compliant Terraform PRs for firewall rule requests.
 * Enforced strict security boundaries by running the AI agent with a read-only token, isolating code-push capabilities to a separate elevated verification job.
 * Reduced security review overhead by turning manual rule authoring into single-click PR reviews while preserving mandatory human approvals.
 
-### 5. Automated Multi-Environment Backup Service & Webhook Security
+### 6. Automated Multi-Environment Backup Service & Webhook Security
 
 * **Technologies:** GitHub Actions, Terraform, Python, Azure Native Backup Service, Azure Automation, Azure Key Vault
 * Designed a reusable cloud backup framework featuring automatic resource auto-discovery and lifecycle resolution for dynamic cloud environments.
