@@ -17,6 +17,8 @@ Cloud Platform Engineer with 5 years of experience building internal developer p
 * **Cloud & Platforms:** Microsoft Azure (AKS, Key Vault, Azure Automation, Function Apps, App Service), GCP, AWS, Kubernetes
 * **Infrastructure & Automation:** Terraform, Ansible, GitHub Actions (Custom Actions, Reusable Workflows), Docker, Python, Bash, PowerShell
 * **Security & Authentication:** Microsoft Entra ID (Azure AD), BFF Pattern, SPA Auth, OIDC Federation, Slack/GitHub Apps, Azure OpenAI API, GitOps
+* **Kubernetes Ecosystem:** Deployments, Services, ReplicaSets, ConfigMaps, Secrets, Ingress Controllers, Gateway API, Traefik, AKS App Routing Addon, cert-manager, trust-manager, Cilium, Helm, Argo CD
+* **Databases:** Python ORMs and fundamental SQL
 
 ---
 
@@ -30,6 +32,8 @@ Cloud Platform Engineer with 5 years of experience building internal developer p
 * Designed and implemented secure web application authentication flows using Microsoft Entra ID, including Backend-for-Frontend (BFF) and Single Page Application (SPA) security patterns.
 * Developed custom Slack Apps and GitHub Apps integrated with Azure OpenAI to handle automated internal queries, streamline developer onboarding, and accelerate team support workflows.
 * Engineered secure self-service deployment pipelines and golden paths, empowering engineering teams to deploy code safely and rapidly.
+* Good hands-on experience deploying applications on GAP, and with Gjensidige's core platform repositories: terraform-common-aad, terraform-azure-onboarding, terraform-azure-subscription-onboarding, terraform-github-repo-credentials, and terraform-hub-firewall.
+* Good operational knowledge of Kubernetes: core primitives (Deployments, Services, ReplicaSets, ConfigMaps, Secrets), ingress and routing (Ingress Controllers, Gateway API, Traefik Gateway, AKS App Routing Addon), certificate automation (cert-manager, trust-manager), Helm, and Argo CD. Comfortable troubleshooting day-to-day issues and quickly picking up new components; currently experimenting with Cilium CNI alongside Traefik to leverage eBPF and Layer 7 benefits.
 
 ### HCL Tech — Cloud Specialist
 
@@ -58,7 +62,7 @@ Cloud Platform Engineer with 5 years of experience building internal developer p
 
 ### 1. Ephemeral Cross-Repo Token Generator (Azure OIDC & GitHub App)
 
-Engineered a Zero-Trust cross-repository cloning architecture that eliminates persistent secrets at rest by combining Azure OIDC, Azure Key Vault, and dynamic GitHub App access token generation. Replacing traditional background rotation, this decentralized pattern mints short-lived tokens at pipeline runtime driven by a centralized JSON-formatted organization variable mapping repository access, governed via platform-reviewed pull requests.
+Designed and implemented a Zero-Trust cross-repository GitHub access solution, used team-wide across Gjensidige, that eliminates persistent secrets at rest by combining flexible Azure OIDC, Azure Key Vault, and dynamic short-lived GitHub App access token generation, with no need to rotate or store secrets in individual GitHub repositories. Replacing traditional background rotation, this decentralized pattern mints short-lived tokens at pipeline runtime driven by a centralized JSON-formatted organization variable mapping repository access, governed via platform-reviewed pull requests.
 
 * **Zero Secrets at Rest:** Replaced static repository tokens with passwordless Azure OIDC federation, removing stored credentials entirely from GitHub settings.
 * **Dynamic Access Token Generation:** Developed runtime workflows that fetch secure Key Vault credentials to dynamically generate scoped GitHub App access tokens on the fly based on the centralized configuration.
@@ -67,35 +71,39 @@ Engineered a Zero-Trust cross-repository cloning architecture that eliminates pe
 ### 2. Cross-Repo Infrastructure Provisioning Golden Path
 
 * **Technologies:** GitHub Reusable Actions, GitHub Apps, Azure OIDC Federation, Terraform, Python, JQ
-* Designed an event-driven, cross-repo provisioning architecture replacing direct repository access and PATs with a secure dispatcher-handler pattern.
+* Designed an event-driven requestor–fulfiller model for cross-repo self-service infrastructure provisioning using GitHub `repository_dispatch` events, turned into a golden path with a reusable composite GitHub Action, Terraform, Python, automated commits, and pull requests.
+* Replaced direct repository access and PATs with a secure dispatcher-handler pattern.
 * Automated JSON-to-tfvars payload deep-merging via a custom Python GitHub Action, generating automated PRs and `terraform plan` reviews.
 * Enforced zero standing secrets using Azure Key Vault-backed short-lived tokens and OIDC federated identities.
 
 ### 3. AI-Powered Slack Assistant & Internal Query Handler
 
 * **Technologies:** Slack API, Azure OpenAI API, Python, Microsoft Entra ID, Azure App Service
-* Built and deployed a custom Slack application integrated with Azure OpenAI to intelligently field, parse, and answer internal platform and engineering queries directly within channel feeds.
+* Built and deployed a custom Slack assistant (operations-support-bot) in the #squad-operations channel, integrated with Azure OpenAI to field, parse, and answer internal platform questions and provide troubleshooting support directly within channel feeds.
 * Automated contextual troubleshooting support and documentation lookups, minimizing recurring manual interruptions for the platform engineering team.
 
 ### 4. Enterprise Ansible Execution Platform on AKS
 
 * **Technologies:** Ansible, GitHub Actions, AKS, Containerization, Python
-* Architected a scalable internal automation platform using custom GitHub Actions and Community Ansible to replicate enterprise features of Ansible Tower without licensing overhead.
+* Architected an internal Ansible Execution Platform to operate on VMs using reusable workflows and custom runner images on automatic AKS, replicating best practices from the terraform-plan-and-apply workflows with support for dry runs and controlled deployments.
+* Used custom GitHub Actions and Community Ansible to replicate enterprise features of Ansible Tower without licensing overhead.
 * Built and managed custom runner images on AKS, integrating automated linting and pip/Ansible Galaxy package management.
 * Secured access using custom onboarding logic and rigorous workflow audit logging.
 
 ### 5. Agentic GitHub Workflows for Automated Terraform PRs
 
 * **Technologies:** Terraform, GitHub Actions, GitHub Agentic Workflows, Azure OpenAI, Azure Firewall
-* Built a self-service GitHub issue intake pipeline powered by AI agents to automatically draft validated, convention-compliant Terraform PRs for firewall rule requests.
+* Built AI-assisted self-service using GitHub Agentic Workflows that converts structured GitHub issues into validated, convention-compliant Terraform pull requests in the terraform-hub-firewall repository.
 * Enforced strict security boundaries by running the AI agent with a read-only token, isolating code-push capabilities to a separate elevated verification job.
 * Reduced security review overhead by turning manual rule authoring into single-click PR reviews while preserving mandatory human approvals.
 
 ### 6. Automated Multi-Environment Backup Service & Webhook Security
 
 * **Technologies:** GitHub Actions, Terraform, Python, Azure Native Backup Service, Azure Automation, Azure Key Vault
-* Designed a reusable cloud backup framework featuring automatic resource auto-discovery and lifecycle resolution for dynamic cloud environments.
-* Secured Azure Automation webhooks by architecting a secondary token validation layer and custom runbook header checks to prevent unauthorized external calls.
+* Designed an automated Azure resource backup service with automatic resource discovery and handling of deleted resources for dynamic cloud environments.
+* Built custom backup automation runbooks for scenarios not supported by Azure Native Backup.
+* Built a security framework for Azure Automation webhooks using token validation, custom runbook header checks, and secure token storage in Azure Key Vault to prevent unauthorized external calls.
+* Developed a Python dispatcher for Azure Automation Hybrid Workers supporting isolated Python virtual environments and more reliable dependency management.
 
 ---
 
