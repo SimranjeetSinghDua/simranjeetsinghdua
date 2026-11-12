@@ -45,13 +45,12 @@ Cloud Platform Engineer with 5 years of experience architecting enterprise inter
 
 ## Key Engineering Projects & Contributions
 
-### 1. Automated Azure Backup Platform
-*Technologies: Terraform, GitHub Actions, Python, Azure Native Backup Service, Azure Automation*
-* Designed and implemented a fully automated, infrastructure-as-code backup platform across test and production environments, ensuring critical business data remains protected without manual intervention.
-* Overcame a key limitation in Terraform's declarative model—where backups could be deleted alongside removed source resources—by making the backup vault the source of truth so backups survive accidental or malicious deletion and require an explicit removal decision.
-* Established automated scheduled backup coverage for Azure disks, virtual machines, blobs, file shares, and PostgreSQL databases with automatic onboarding for new resources and configuration-based exclusions for team opt-outs.
-* Built custom backup automation runbooks for scenarios not supported by Azure Native Backup, ensuring consistent, code-reviewed, and repeatable execution across environments.
-* **Impact:** Improved business continuity and data protection, reduced operational overhead, and eliminated the risk of backups being unintentionally removed alongside their source resources.
+### 1. Secure, Passwordless GitHub Authentication for Pipelines (Ephemeral Token Generator)
+*Technologies: Azure Workload Identity Federation (OIDC), Azure Key Vault, GitHub Apps, GitHub Actions*
+* Designed and implemented a Zero-Trust cross-repository authentication model used team-wide across Gjensidige, eliminating long-lived credentials and periodic secret rotation across GitHub repositories.
+* Leveraged Azure workload identity federation so pipelines prove their runtime identity to Azure, retrieve centralized Key Vault credentials, and dynamically mint temporary GitHub App access tokens scoped to specific repositories with a 1-hour expiry.
+* Governed multi-repository access via a centralized JSON organization variable mapping repositories to permissions, reviewed through platform pull requests.
+* **Impact:** Strengthened supply chain security, eliminated standing secrets at rest, and removed recurring manual secret rotation overhead.
 
 ### 2. Webhook Security for Azure Automation Runbooks & Key Vault Notifications
 *Technologies: Azure Automation, Azure Key Vault, PowerShell, Python, Webhooks*
@@ -73,12 +72,13 @@ Cloud Platform Engineer with 5 years of experience architecting enterprise inter
 * Isolated write operations to deterministic, predefined actions (creating PRs, pushing to the PR branch, and updating PRs) via an elevated verification job, integrating automated Terraform plan dry runs and mandatory Security team reviews before apply.
 * **Impact:** Removed manual DevOps bottlenecks, accelerated firewall delivery, and maintained strict auditability and security boundaries.
 
-### 5. Secure, Passwordless GitHub Authentication for Pipelines (Ephemeral Token Generator)
-*Technologies: Azure Workload Identity Federation (OIDC), Azure Key Vault, GitHub Apps, GitHub Actions*
-* Designed and implemented a Zero-Trust cross-repository authentication model used team-wide across Gjensidige, eliminating long-lived credentials and periodic secret rotation across GitHub repositories.
-* Leveraged Azure workload identity federation so pipelines prove their runtime identity to Azure, retrieve centralized Key Vault credentials, and dynamically mint temporary GitHub App access tokens scoped to specific repositories with a 1-hour expiry.
-* Governed multi-repository access via a centralized JSON organization variable mapping repositories to permissions, reviewed through platform pull requests.
-* **Impact:** Strengthened supply chain security, eliminated standing secrets at rest, and removed recurring manual secret rotation overhead.
+### 5. Automated Azure Backup Platform
+*Technologies: Terraform, GitHub Actions, Python, Azure Native Backup Service, Azure Automation*
+* Designed and implemented a fully automated, infrastructure-as-code backup platform across test and production environments, ensuring critical business data remains protected without manual intervention.
+* Overcame a key limitation in Terraform's declarative model—where backups could be deleted alongside removed source resources—by making the backup vault the source of truth so backups survive accidental or malicious deletion and require an explicit removal decision.
+* Established automated scheduled backup coverage for Azure disks, virtual machines, blobs, file shares, and PostgreSQL databases with automatic onboarding for new resources and configuration-based exclusions for team opt-outs.
+* Built custom backup automation runbooks for scenarios not supported by Azure Native Backup, ensuring consistent, code-reviewed, and repeatable execution across environments.
+* **Impact:** Improved business continuity and data protection, reduced operational overhead, and eliminated the risk of backups being unintentionally removed alongside their source resources.
 
 ### 6. AI-Powered Operations and Support Assistant in Slack
 *Technologies: Slack API, Azure OpenAI API, Python, Microsoft Entra ID, Azure App Service, GitHub API*
