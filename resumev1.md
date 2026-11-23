@@ -67,7 +67,7 @@ Cloud Platform Engineer with 5 years of experience architecting enterprise inter
 
 ### 4. AI-Powered Firewall Change Automation (Agentic GitHub Workflows)
 *Technologies: Terraform, GitHub Actions, GitHub Agentic Workflows, Azure OpenAI, Azure Firewall*
-* Developed an AI-powered self-service workflow enabling teams to submit structured firewall change requests through forms/issues, with an AI agent drafting convention-compliant Terraform pull requests in `terraform-hub-firewall`.
+* Developed an AI-powered self-service workflow enabling teams to submit structured firewall change requests through forms/issues, with an AI agent drafting convention-compliant Terraform pull requests in our github firewall repo.
 * Designed the agent to run inside a tightly restricted sandbox with read-only repository and issue access, approved command execution, and network destination allowlisting.
 * Isolated write operations to deterministic, predefined actions (creating PRs, pushing to the PR branch, and updating PRs) via an elevated verification job, integrating automated Terraform plan dry runs and mandatory Security team reviews before apply.
 * **Impact:** Removed manual DevOps bottlenecks, accelerated firewall delivery, and maintained strict auditability and security boundaries.
@@ -102,7 +102,7 @@ Cloud Platform Engineer with 5 years of experience architecting enterprise inter
 ### 9. Enterprise Adoption of Secure SPA + BFF Authentication Pattern
 *Technologies: Microsoft Entra ID, Single Page Applications (SPA), Backend for Frontend (BFF), OAuth 2.0 / OIDC*
 * Promoted and supported engineering teams in adopting the SPA + BFF architecture so authentication flows and sensitive access tokens remain server-side rather than exposed in browser storage.
-* Guided production adoption across key applications including **AI Insights** and **xledgerconverter**, while actively coaching additional teams through architectural transitions.
+* Guided production adoption across key applications, while actively coaching additional teams through architectural transitions.
 * **Impact:** Reduced exposure to browser-based token theft and account takeover risks while establishing a repeatable security standard.
 
 ---
