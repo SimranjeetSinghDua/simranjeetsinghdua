@@ -21,7 +21,7 @@ Cloud Platform Engineer with 5 years of experience architecting enterprise inter
 ### **Gjensidige** — Cloud Platform Engineer  
 *05/2024 – Present | Oslo, Norway*
 * Architected and maintained enterprise internal developer platforms, automating multi-environment infrastructure provisioning and cloud workflows using Azure, Terraform, Ansible, and Kubernetes.
-* Designed, implemented, and championed secure web application authentication flows using Microsoft Entra ID and the SPA + BFF (Single Page Application + Backend for Frontend) pattern across production apps (including AI Insights and xledgerconverter) to eliminate browser token exposure.
+* Designed, implemented, and championed secure web application authentication flows using Microsoft Entra ID and the SPA + BFF (Single Page Application + Backend for Frontend) pattern across production apps to eliminate browser token exposure.
 * Developed custom Slack Apps and GitHub Apps integrated with Azure OpenAI to automate internal operational support, streamline developer onboarding, and generate validated Terraform pull requests for firewall changes.
 * Engineered secure self-service deployment pipelines, passwordless OIDC authentication models, and golden paths, empowering engineering teams to deploy code safely without standing secrets.
 * Operational expertise across Kubernetes primitives (Deployments, Services, ReplicaSets, ConfigMaps, Secrets), ingress and routing (Ingress Controllers, Gateway API, Traefik Gateway, AKS App Routing Addon), certificate automation (cert-manager, trust-manager), Helm, Argo CD, and Cilium CNI with eBPF.
@@ -82,7 +82,7 @@ Cloud Platform Engineer with 5 years of experience architecting enterprise inter
 
 ### 6. AI-Powered Operations and Support Assistant in Slack
 *Technologies: Slack API, Azure OpenAI API, Python, Microsoft Entra ID, Azure App Service, GitHub API*
-* Built and deployed an AI-powered assistant (`operations-support-bot` in `#squad-operations`) integrated into Slack channels, threads, and direct messages to answer operational and platform support questions.
+* Built and deployed an AI-powered assistant integrated into Slack channels, threads, and direct messages to answer operational and platform support questions.
 * Built an automated ingestion and scheduled synchronization pipeline aggregating internal knowledge from Slack conversations, Confluence pages, websites, and GitHub Markdown documentation, alongside live retrieval from GitHub repositories, issues, PRs, and Actions workflow runs.
 * Engineered strict hallucination controls so the assistant abstains from answering in public channels when context is insufficient and transparently communicates uncertainty in direct messages.
 * **Impact:** Provided reliable self-service support, reduced recurring interruptions for platform engineers, and minimized unreliable AI responses.
